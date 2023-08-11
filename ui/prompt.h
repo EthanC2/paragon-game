@@ -35,16 +35,13 @@ bool prompt_bool(const char *prompt)
  *  SUMMARY:
  *	Reads an integer between the range [min,max] from the user
  * */
-int prompt_int(const char *prompt, int min, int max)
+int prompt_int(int min, int max)
 {
     int integer;
 
     do 
     { 
-	if (prompt != NULL)
-	{
-	    printf("%s? (int %d-%d): ", prompt, min, max); 
-	}
+       printf("(int %d-%d)> ", min, max); 
     } while (scanf("%d", &integer) < 0 || integer < min || integer > max);
 
     return integer;

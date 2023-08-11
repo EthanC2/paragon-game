@@ -28,7 +28,7 @@ void file_print(const char *filename)
     file = fopen(filename, "r");
     if (file == NULL)
     {
-	error("error: could not print file");
+	error(filename, ENOFILE, true);
 	return;
     }
 

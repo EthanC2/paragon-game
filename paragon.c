@@ -8,20 +8,21 @@ int main()
 {
     while (true)
     {
-	int choice = menu_choose("text/meta/titlescreen.menu");
+	int choice = menu_choice("text/meta/titlescreen.menu", 4);
     
 	switch (choice)
 	{
 	    case 0:
-		puts("printing about");
 		file_print("text/meta/about.txt");
 		break;
 	    case 1:
-		puts("starting game");
 		game_main();
 		break;
 	    case 2:
-		puts("exiting");
+		file_print("text/meta/credits.txt");
+		break;
+
+	    case 3:
 		exit(EXIT_SUCCESS);
 	}
     }

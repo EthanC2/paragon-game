@@ -2,14 +2,25 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-void error(const char *context)
-{
-    printf("uh oh! %s\n", context);
-}
+#define ENOFILE 1
 
-void fatal_error(const char *context, int exit_code)
+static const char *err_lut[] = {
+    [ENOFILE] = "missing file"
+};
+
+void error(const char *context, int errcode, bool fatal)
 {
-    printf("FATAL ERROR: %s (error code: %d)\n", context, exit_code);
-    exit(exit_code);
+    if (context == NULL)
+    {
+	context = "no context";
+    }
+
+    printf("[ERROR] %s: %s\n", err_lut[errcode], context);
+
+    if (fatal)
+    {
+	exit(+errcode);
+    }
 }
